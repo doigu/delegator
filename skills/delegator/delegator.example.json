@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "harnesses": {},
+  "execution": {
+    "status_interval_seconds": 1800,
+    "max_runtime_seconds": null
+  },
+  "hidden": [],
+  "aliases": {
+    "glm-5.3-flash": {
+      "routes": [
+        "zcode/account:zai-start-plan/GLM-5.3-Flash",
+        "zcode/account:zai-individual-coding-plan/GLM-5.3-Flash"
+      ]
+    },
+    "deepseek-v4.1-flash": {
+      "routes": [
+        "opencode/opencode/deepseek/deepseek-v4.1-flash",
+        "opencode/commandcode/deepseek/deepseek-v4.1-flash"
+      ]
+    }
+  }
+}
