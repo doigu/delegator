@@ -331,5 +331,17 @@ class RegistryTests(unittest.TestCase):
                     registry.save(tempfile.gettempdir() + "/never-written.json", config)
 
 
+    def test_example_config_validates_and_covers_all_harnesses(self):
+        example_path = Path(__file__).parents[1] / "delegator.example.json"
+        data = registry.load(example_path)
+        self.assertEqual(data["version"], 1)
+        self.assertEqual(set(data["harnesses"]), {"codex", "claude", "opencode", "zcode", "agy"})
+        self.assertIn("capacity_retries", data["execution"])
+        self.assertIn("capacity_retry_seconds", data["execution"])
+        self.assertIn("route_retries", data["execution"])
+        self.assertTrue(len(data.get("hidden", [])) > 0)
+        self.assertTrue(len(data.get("aliases", {})) > 0)
+
+
 if __name__ == "__main__":
     unittest.main()

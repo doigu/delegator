@@ -1,11 +1,181 @@
 {
   "version": 1,
-  "harnesses": {},
   "execution": {
     "status_interval_seconds": 1800,
-    "max_runtime_seconds": null
+    "max_runtime_seconds": null,
+    "capacity_retries": 3,
+    "capacity_retry_seconds": 30,
+    "route_retries": 1
   },
-  "hidden": [],
+  "harnesses": {
+    "codex": {
+      "enabled": true,
+      "providers": {
+        "openai": {
+          "enabled": true,
+          "quota": {
+            "blocked": false,
+            "reset_at": null,
+            "reason": null
+          },
+          "models": {
+            "gpt-6-luna": {
+              "enabled": true,
+              "efforts": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "default_effort": "low"
+            }
+          }
+        }
+      }
+    },
+    "claude": {
+      "enabled": true,
+      "providers": {
+        "anthropic": {
+          "enabled": true,
+          "quota": {
+            "blocked": false,
+            "reset_at": null,
+            "reason": null
+          },
+          "models": {
+            "claude-sonnet-5-5": {
+              "enabled": true,
+              "efforts": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "default_effort": "high"
+            }
+          }
+        }
+      }
+    },
+    "opencode": {
+      "enabled": true,
+      "providers": {
+        "opencode": {
+          "enabled": true,
+          "quota": {
+            "blocked": false,
+            "reset_at": null,
+            "reason": null
+          },
+          "models": {
+            "deepseek/deepseek-v4.1-flash": {
+              "enabled": true,
+              "efforts": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "default_effort": "medium"
+            }
+          }
+        },
+        "commandcode": {
+          "enabled": true,
+          "quota": {
+            "blocked": true,
+            "reset_at": "2026-10-31T00:00:00Z",
+            "reason": "daily-limit-exceeded"
+          },
+          "models": {
+            "deepseek/deepseek-v4.1-flash": {
+              "enabled": true,
+              "efforts": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "default_effort": "medium"
+            }
+          }
+        }
+      }
+    },
+    "zcode": {
+      "enabled": true,
+      "providers": {
+        "account:zai-start-plan": {
+          "enabled": true,
+          "quota": {
+            "blocked": false,
+            "reset_at": null,
+            "reason": null
+          },
+          "models": {
+            "GLM-5.3-Flash": {
+              "enabled": true,
+              "efforts": [
+                "low",
+                "high"
+              ],
+              "default_effort": "low"
+            },
+            "GLM-5.3": {
+              "enabled": true,
+              "efforts": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "default_effort": "medium",
+              "override": true
+            }
+          }
+        },
+        "account:zai-individual-coding-plan": {
+          "enabled": true,
+          "quota": {
+            "blocked": false,
+            "reset_at": null,
+            "reason": null
+          },
+          "models": {
+            "GLM-5.3-Flash": {
+              "enabled": true,
+              "efforts": [
+                "low",
+                "high"
+              ],
+              "default_effort": "low"
+            }
+          }
+        }
+      }
+    },
+    "agy": {
+      "enabled": true,
+      "providers": {
+        "gemini": {
+          "enabled": true,
+          "quota": {
+            "blocked": false,
+            "reset_at": null,
+            "reason": null
+          },
+          "models": {
+            "gemini-3.5-pro": {
+              "enabled": true,
+              "efforts": [],
+              "default_effort": null
+            }
+          }
+        }
+      }
+    }
+  },
+  "hidden": [
+    "codex/openai/gpt-5.6-terra",
+    "opencode/openrouter",
+    "agy/gemini/gemini-2.5-flash"
+  ],
   "aliases": {
     "glm-5.3-flash": {
       "routes": [
